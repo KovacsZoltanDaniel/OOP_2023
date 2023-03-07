@@ -1,7 +1,7 @@
 package lab3_1;
 
 public class BankAccount {
-    private String accountNumber;
+    private  String accountNumber;
     private double balance;
 
     public BankAccount(String accountNumber){
