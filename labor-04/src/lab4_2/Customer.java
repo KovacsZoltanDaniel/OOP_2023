@@ -18,8 +18,6 @@ public class Customer {
     public void addAccount(BankAccount account) {
         this.accounts.add(account);
     }
-
-
     public BankAccount getAccount(String accountNumber){
         for (BankAccount a : accounts){
             if(a.getAccountNumber().equals(accountNumber)){
@@ -45,15 +43,19 @@ public class Customer {
     }
 
     public void closeAccount(String accountNumber) {
-        this.accounts = null;
+        for (BankAccount a : accounts) {
+            if(a.getAccountNumber().equals(accountNumber)){
+                accounts.remove(a);
+            }
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", accounts=" + accounts +
-                '}';
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        result.append(firstName).append(" ").append(lastName).append("accounts:\n");
+        for (BankAccount account : accounts) {
+            result.append("\t").append(account).append("\n");
+        }
+        return result.toString();
     }
 }

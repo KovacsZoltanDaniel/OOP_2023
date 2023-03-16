@@ -5,7 +5,6 @@ public class Person {
     private String lastName;
     private int birthYear;
 
-
     public Person(String firstName, String lastName, int birthYear) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,10 +29,9 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthYear=" + birthYear +
-                '}';
+        return "Person: " +
+                "firstName = '" + firstName + '\'' +
+                ", lastName = '" + lastName + '\'' +
+                ", birthYear = " + birthYear;
     }
 }

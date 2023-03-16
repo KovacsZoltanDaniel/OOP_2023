@@ -23,8 +23,6 @@ public class Main {
                 System.out.println(sorszam+": "+line);
                 sorszam++;
             }
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
