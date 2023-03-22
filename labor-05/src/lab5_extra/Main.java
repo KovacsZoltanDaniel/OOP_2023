@@ -133,7 +133,7 @@ public class Main {
             System.out.println(person);
         }
     }
-    public static ArrayList<Person> readFromCheckoutCSVFile(String fileName, ArrayList<Library> libraries, ArrayList<Person> persons) {
+    public static void readFromCheckoutCSVFile(String fileName, ArrayList<Library> libraries, ArrayList<Person> persons) {
             try (Scanner scanner = new Scanner(new File(fileName))) {
                 int notPresentPerson = 0;
                 int notPresentBook = 0;
@@ -146,11 +146,11 @@ public class Main {
                     }
                     String[] items = line.split(",");
                     String personID = items[0].trim();
-                    int bookID = Integer.parseInt(items[1].trim());
 
                     Person person = null;
                     Book book = null;
 
+                    int bookID = Integer.parseInt(items[1].trim());
                     for (int i = 0; i < persons.size(); i++) {
                         if(persons.get(i).getId().equals(personID)){
                             person = persons.get(i);
@@ -187,7 +187,6 @@ public class Main {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            return persons;
         }
     public static void printPeople(ArrayList<Person> persons) {
         for (Person person : persons) {
