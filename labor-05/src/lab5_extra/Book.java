@@ -10,6 +10,7 @@ public class Book implements Comparable<Book> {
     private int numPages;
     private  boolean checkedOut;
     private final int id;
+    private static final AtomicInteger count = new AtomicInteger(1);
 
     public Book(String title, String author, String isbn){
         this.title = title;
@@ -17,7 +18,7 @@ public class Book implements Comparable<Book> {
         this.isbn = isbn;
         //this.numPages = numPages;
         // mivel az elso konyv 1 es id-t kell kapjon
-        AtomicInteger count = new AtomicInteger(1);
+
         this.id = count.getAndIncrement(); // igy lehet novelni az id-t
     }
 

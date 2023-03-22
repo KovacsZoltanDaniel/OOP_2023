@@ -158,11 +158,13 @@ public class Main {
                     }
                     if(person == null){
                         notPresentPerson++;
+                        continue;
                     }
                     for (Library library : libraries) {
                         for (int j = 0; j < library.countBooks(); j++) {
                             if (library.getBooks().get(j).getId() == bookID && !library.getBooks().get(j).isCheckedOut()) {
                                 book = library.getBooks().get(j);
+                                library.checkoutBook(book.getTitle());
                             }
                         }
                     }
