@@ -1,3 +1,5 @@
+package labor5_evkozi_vizsga.src;
+
 public class Termek {
     private int azonosito;
     private String elnevezes;
@@ -35,6 +37,10 @@ public class Termek {
 
     public void setDarab(int darab) {
         this.darab += darab;
+    }
+
+    public int getDarab() {
+        return darab;
     }
 
     @Override

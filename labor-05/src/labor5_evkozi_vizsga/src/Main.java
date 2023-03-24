@@ -1,3 +1,5 @@
+package labor5_evkozi_vizsga.src;
+
 import java.util.ArrayList;
 
 
@@ -14,5 +16,8 @@ public class Main {
         }*/
         Raktar.readFromRaktarTxtFile("raktar.txt", termekek);
         Raktar.printTermekek(termekek);
+        System.out.println("a raktarban levo termekek osszebeszerzesi ara: " + Raktar.osszBeszerzesiar(termekek));
+        Raktar.kulonbseg(termekek);
+        System.out.println(" termek eseten a legnagyobb a fogyasztoi ar es a beszerzesi ar kozti kulonbseg");
     }
 }
