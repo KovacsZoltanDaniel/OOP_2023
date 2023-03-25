@@ -87,4 +87,17 @@ public class Raktar {
             }
         }
     }
+    public static void nyereseg(ArrayList<Termek> termekek){
+        double max = termekek.get(0).getFogyasztoiAr() * termekek.get(0).getDarab();
+        for (int i = 1; i < termekek.size(); i++) {
+            if(termekek.get(i).getFogyasztoiAr() * termekek.get(i).getDarab() > max){
+                max =termekek.get(i).getFogyasztoiAr() * termekek.get(i).getDarab();
+            }
+        }
+        for (int i = 0; i < termekek.size(); i++) {
+            if (termekek.get(i).getFogyasztoiAr() * termekek.get(i).getDarab() == max) {
+                System.out.println("a raktaron levo termek amely hozna a legnagyobb nyereseget " + termekek.get(i));
+            }
+        }
+    }
 }

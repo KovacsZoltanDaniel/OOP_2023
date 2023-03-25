@@ -19,5 +19,6 @@ public class Main {
         System.out.println("a raktarban levo termekek osszebeszerzesi ara: " + Raktar.osszBeszerzesiar(termekek));
         Raktar.kulonbseg(termekek);
         System.out.println(" termek eseten a legnagyobb a fogyasztoi ar es a beszerzesi ar kozti kulonbseg");
+        Raktar.nyereseg(termekek);
     }
 }
