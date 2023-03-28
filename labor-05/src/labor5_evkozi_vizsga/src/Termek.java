@@ -39,6 +39,10 @@ public class Termek {
         this.darab += darab;
     }
 
+    public int getDarab() {
+        return darab;
+    }
+
     @Override
     public String toString() {
         return "Termek{" +
