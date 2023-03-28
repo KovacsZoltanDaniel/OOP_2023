@@ -15,6 +15,6 @@ public class Bank {
     }
 
     public void addCustomer (Customer customer){
-        customer.addAccount(customer);
+        customers.add(customer);
     }
 }

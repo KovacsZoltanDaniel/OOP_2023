@@ -25,7 +25,7 @@ public class MyDate {
 
     @Override
     public String toString() {
-        return "oop.labor02.MyDate: " +
+        return
                 "year= " + year +
                 " month= " + month +
                 " day= " + day ;

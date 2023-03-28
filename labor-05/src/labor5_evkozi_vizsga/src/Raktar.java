@@ -1,3 +1,5 @@
+package labor5_evkozi_vizsga.src;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

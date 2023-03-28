@@ -1,3 +1,5 @@
+package labor5_evkozi_vizsga.src;
+
 public class Termek {
     private int azonosito;
     private String elnevezes;
