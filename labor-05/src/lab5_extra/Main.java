@@ -35,7 +35,6 @@ public class Main {
     }
     public static ArrayList<Library> readLibrariesFromCSV(String fileName) {
             ArrayList<Library> libraries = new ArrayList<>();
-
             try (Scanner scanner = new Scanner(new File(fileName))) {
                 int i = 0;
                 while (scanner.hasNextLine()) {
@@ -195,5 +194,6 @@ public class Main {
             System.out.print(person.getFirstName() + " " + person.getLastName() + " - books to return: " + person.getNumOfBooks() + "\n");
         }
     }
+
 }
 

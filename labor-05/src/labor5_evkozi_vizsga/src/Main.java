@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-
+        ArrayList<Raktar> raktarok = new ArrayList<>();
         Termek termek1 = new Termek(10, "alma", 5);
         termek1.setArres(10);
         System.out.println(termek1);

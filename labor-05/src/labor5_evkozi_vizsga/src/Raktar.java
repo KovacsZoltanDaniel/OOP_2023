@@ -94,9 +94,9 @@ public class Raktar {
                 max =termekek.get(i).getFogyasztoiAr() * termekek.get(i).getDarab();
             }
         }
-        for (int i = 0; i < termekek.size(); i++) {
-            if (termekek.get(i).getFogyasztoiAr() * termekek.get(i).getDarab() == max) {
-                System.out.println("a raktaron levo termek amely hozna a legnagyobb nyereseget " + termekek.get(i));
+        for (Termek termek : termekek) {
+            if (termek.getFogyasztoiAr() * termek.getDarab() == max) {
+                System.out.println("a raktaron levo termek amely hozna a legnagyobb nyereseget " + termek);
             }
         }
     }
