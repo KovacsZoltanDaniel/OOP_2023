@@ -14,6 +14,9 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    public Customer() {
+
+    }
 
     public void addAccount(BankAccount account) {
         this.accounts.add(account);

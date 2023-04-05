@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Customer> customers = readFromCSVFile("lab4_2_input.csv");
-        for (int i = 0; i < customers.size(); i++) {
-            System.out.println(customers.get(i));
+        for (Customer customer : customers) {
+            System.out.println(customer);
         }
     }
     public static ArrayList<Customer> readFromCSVFile(String fileName) {
@@ -23,28 +23,35 @@ public class Main {
                 }
                 String[] items = line.split(",");
 
-                while (items[0].trim().equals("Customer")) {
-                    String firstName = items[1].trim();
-                    String lastName = items[2].trim();
-                    customers.add(new Customer(firstName, lastName));
-                    Customer currentCustomer = customers.get(i);
-                    i++;
-                    if (scanner.hasNextLine()) {
-                        line = scanner.nextLine();
-                        items = line.split(",");
-                    } else break;
-                    while (items[0].trim().equals("Account")) {
-                        String accountNumber = items[1].trim();
-                        double balance = Double.parseDouble(items[2].trim());
-                        currentCustomer.addAccount(new BankAccount(accountNumber, balance));
+                while (scanner.hasNextLine()) {
+                    if(items[0].trim().equals("Customer")){
+                        String firstName = items[1].trim();
+                        String lastName = items[2].trim();
+                        customers.add(new Customer(firstName, lastName));
+                        i++;
                         if (scanner.hasNextLine()) {
                             line = scanner.nextLine();
                             items = line.split(",");
-                        } else break;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                    else if (items[0].trim().equals("Account")){
+                        String accountNumber = items[1].trim();
+                        double balance = Double.parseDouble(items[2].trim());
+                        customers.get(i-1).addAccount(new BankAccount(accountNumber, balance));
+                        if (scanner.hasNextLine()) {
+                            line = scanner.nextLine();
+                            items = line.split(",");
+                        }
+                        else {
+                            break;
+                        }
+                     }
                     }
                 }
-            }
-        } catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return customers;

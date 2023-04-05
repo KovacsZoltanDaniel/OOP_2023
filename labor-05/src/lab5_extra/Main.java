@@ -60,7 +60,7 @@ public class Main {
                             }
                         }
                         else {
-                            while (items[0].trim().equals("BOOK")){
+                            if (items[0].trim().equals("BOOK")){
                                 String name = items[1].trim();
                                 String author = items[2].trim();
                                 String isbn = items[3].trim();
