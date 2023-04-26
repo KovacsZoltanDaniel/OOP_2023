@@ -11,8 +11,14 @@ public class Bank {
         this.name = name;
     }
 
-    public ArrayList<Customer> getCustomers() {
-        return customers;
+    public Customer getCustomer(int customerId) {
+        for (Customer customer : customers) {
+            if (customer.getId() == customerId) {
+                return customer;
+            }
+        }
+        System.out.println("Customer not found by the given id!");
+        return null;
     }
 
     public void addCustomer (Customer customer){

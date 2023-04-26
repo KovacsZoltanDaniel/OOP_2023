@@ -4,8 +4,8 @@ package lab8_1;
 import java.util.ArrayList;
 
 public class Customer {
-    private static int numCustomers;
-    private final int id;
+    private static int numCustomers = 1;
+    private final int id ;
     private String firstName;
     private String lastName;
     private ArrayList<BankAccount> accounts = new ArrayList<>();
