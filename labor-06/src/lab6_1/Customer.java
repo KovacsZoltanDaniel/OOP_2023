@@ -2,44 +2,52 @@ package lab6_1;
 
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Customer {
-    private static int numCustomers;
-    private final int id;
     private String firstName;
     private String lastName;
     private ArrayList<BankAccount> accounts = new ArrayList<>();
+    private static AtomicInteger counter = new AtomicInteger(1);
+    private final int ID;
+    private static int numCustomers = 0;
 
     public Customer(String firstName, String lastName) {
+        ++numCustomers;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = numCustomers++;
+        this.ID = counter.getAndIncrement();
     }
 
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
-    public int getNumAccounts(){
+
+    public int getNumAccounts() {
         return accounts.size();
     }
+
     public ArrayList<String> getAccountNumbers() {
-        ArrayList<String> result = new ArrayList<>();
-        for (BankAccount account : accounts) {
-            result.add(account.getAccountNumber());
+        ArrayList<String> accountNumbers = new ArrayList<>();
+        for (int i = 0; i < getNumAccounts(); i++) {
+            accountNumbers.add(accounts.get(i).getAccountNumber());
         }
-        return result;
+        return accountNumbers;
     }
-    public void addAccount(BankAccount bankAccount){
-        accounts.add(bankAccount);
+
+    public void addAccount(BankAccount account) {
+        accounts.add(account);
     }
-    public BankAccount getAccount(String accountNumber){
-        for (BankAccount a : accounts){
-            if(a.getAccountNumber().equals(accountNumber)){
-                return a;
+
+    public BankAccount getAccount(String accountNumber) {
+        for (BankAccount account : accounts) {
+            if (account.getAccountNumber().equals(accountNumber)) {
+                return account;
             }
         }
         return null;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -48,24 +56,25 @@ public class Customer {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-
-
     public void closeAccount(String accountNumber) {
-        for (int i = 0; i < accounts.size(); i++) {
-            if(accounts.get(i).getAccountNumber().equals(accountNumber)){
-                accounts.remove(accounts.get(i));
+        int numAccountsOriginal = accounts.size();
+        for (BankAccount account: accounts) {
+            if (account.getAccountNumber().equals(accountNumber)) {
+                accounts.remove(account);
+                break;
             }
         }
+        if (numAccountsOriginal == accounts.size()) {
+            System.out.println("Account is not existing!");
+        }
     }
-    public String toString(){
-        StringBuilder result = new StringBuilder();
-        result.append(firstName).append(" ").append(lastName).append(id).append("accounts:\n");
+
+    @Override
+    public String toString() {
+        StringBuffer result = new StringBuffer();
+        result.append(firstName + ' ' + lastName + "(id: " + ID + ")" + " accounts:\n");
         for (BankAccount account : accounts) {
-            result.append("\t").append(account).append("\n");
+            result.append("\t" + account + "\n");
         }
         return result.toString();
     }

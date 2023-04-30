@@ -7,44 +7,48 @@ public class BankAccount {
     private final String accountNumber;
     private double balance;
 
-    public BankAccount(){
+    public BankAccount() {
         ++numAccounts;
         this.accountNumber = createAccountNumber();
     }
 
-    private static  String createAccountNumber(){
-        int len = ACCOUNT_NUMBER_LENGTH - PREFIX.length();
-        return String.format("%s%0" + len + "d", PREFIX, numAccounts);
+    private static String createAccountNumber() {
+        int size = String.valueOf(numAccounts).length();
+        StringBuffer number = new StringBuffer(PREFIX);
+        for (int i = 0; i < ACCOUNT_NUMBER_LENGTH - PREFIX.length() - size; i++) {
+            number.append("0");
+        }
+        number.append(numAccounts);
+        return number.toString();
     }
-    public double getBalance(){
+
+    public double getBalance() {
         return balance;
     }
+
     public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void deposit(double amount){
-        if(amount < 0){
-            return;
+    public void deposit(double amount) {
+        if ( amount > 0) {
+            balance += amount;
         }
-        this.balance += amount;
     }
-    public boolean withDraw(double amount){
-        if(amount < 0 ){
-            return false;
+
+    public boolean withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            return true;
         }
-        if(amount > this.balance){
-            return false;
-        }
-        this.balance -= amount;
-        return true;
+        return false;
     }
 
     @Override
     public String toString() {
         return "BankAccount{" +
                 "accountNumber='" + accountNumber + '\'' +
-                " balance=" + balance +
-                '}'+"\n";
+                ", balance=" + balance +
+                '}';
     }
 }
