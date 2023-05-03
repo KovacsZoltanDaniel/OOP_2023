@@ -32,9 +32,9 @@ public class CircularQueue implements IQueue {
             System.out.println("Queue is full!");
         }
         else {
-            if (front == -1)
+            if (front == -1) {
                 front = 0;
-
+            }
             rear = (rear + 1) % capacity;
             items[rear] = object;
             System.out.println("Inserted " + object);
