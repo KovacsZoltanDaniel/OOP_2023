@@ -75,12 +75,22 @@ public class CircularQueue implements IQueue {
         }
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CircularQueue that = (CircularQueue) o;
-        return capacity == that.capacity && front == that.front && rear == that.rear && Arrays.equals(items, that.items);
+        if (this.items.length == (that).items.length) {
+            int i, j;
+            for (i = this.front, j = (that).front; i != this.rear && j != (that).rear; i = (i + 1) % capacity, j = (j + 1) % (that).items.length) {
+                if (this.items[i] != (that).items[j]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
 }

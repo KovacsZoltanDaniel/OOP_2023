@@ -7,12 +7,12 @@ public class DictionaryProvider {
             case ARRAY_LIST:
                 dictionary = ArrayListDictionary.newInstance();
                 break;
-            case HASH_SET:
-                dictionary = HashSetDictionary.newInstance();
+            /*case HASH_SET:
+               // dictionary = HashSetDictionary.newInstance();
                 break;
             case TREE_SET:
-                dictionary = TreeSetDictionary.newInstance();
-                break;
+               // dictionary = TreeSetDictionary.newInstance();
+                break;*/
         }
         return dictionary;
     }

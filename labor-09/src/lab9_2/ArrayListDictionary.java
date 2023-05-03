@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ArrayListDictionary implements IDictionary{
-    private ArrayList<String> words = new ArrayList<>();
+    private ArrayList<String> words ;
     private static  ArrayListDictionary instance;
 
     private ArrayListDictionary() {
+        words = new ArrayList<>();
     }
-    public IDictionary newInstance(){
+    public static IDictionary newInstance(){
         if (instance == null) {
             instance = new ArrayListDictionary();
         }
