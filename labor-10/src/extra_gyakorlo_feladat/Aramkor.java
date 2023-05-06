@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 public class Aramkor {
-    private ArrayList<Alkatresz> alkatreszek = new ArrayList<>();;
+    private final ArrayList<Alkatresz> alkatreszek = new ArrayList<>();
 
     public Aramkor() {
 
@@ -20,8 +20,8 @@ public class Aramkor {
     }
     public double osszAr(){
         double sum = 0 ;
-        for (int i = 0; i < alkatreszek.size(); i++) {
-            sum += alkatreszek.get(i).ar;
+        for (Alkatresz alkatresz : alkatreszek) {
+            sum += alkatresz.ar;
         }
         return sum;
     }
@@ -35,21 +35,21 @@ public class Aramkor {
     }
     public boolean csakEllenallasok(){
         for (int i = 0; i < numOfAlkatresz(); i++) {
-            if((!alkatreszek.get(i).toString().contains("Ellenalas"))){
+            if(!(alkatreszek.get(i).toString().contains("Ellenallas"))){
                 return false;
             }
         }
         return true;
     }
     public double eredoEllenallas(){
-        if (csakEllenallasok()) {
             double sum = 0;
-            for (int i = 0; i < numOfAlkatresz(); i++) {
-                Alkatresz copy = alkatreszek.get(i);
-                sum +=
-            }
-            return sum;
-        } else {
+        if (csakEllenallasok()) {
+           for (int i = 0; i < numOfAlkatresz(); i++) {
+                sum += ((Ellenallas) alkatreszek.get(i)).getErtek();
+           }
+           return sum;
+        }
+        else {
             return -1;
         }
     }
@@ -69,16 +69,14 @@ public class Aramkor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Aramkor that = (Aramkor) o;
-        if (this.numOfAlkatresz() != that.numOfAlkatresz()) {
-            return false;
-        }
-        for (int i = 0; i < this.numOfAlkatresz(); i++) {
-            if (!this.alkatreszek.get(i).equals(that.alkatreszek.get(i))) {
-                return false;
+
+        for (int i = 0; i < that.alkatreszek.size(); i++) {
+            for (int j = 0; j < this.alkatreszek.size(); j++) {
+                if (this.alkatreszek.get(i).equals(that.alkatreszek.get(j))) {
+                    return true;
+                }
             }
         }
-        return true;
+        return false;
     }
-
-
 }

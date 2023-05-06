@@ -29,5 +29,7 @@ public class Main {
 
         System.out.println();
         System.out.println("Csak ellenallasokbol all: " + aramkor.csakEllenallasok());
+
+        System.out.println("Eredo ellenallas : " + aramkor.eredoEllenallas());
     }
 }

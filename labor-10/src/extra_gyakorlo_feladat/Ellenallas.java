@@ -16,7 +16,7 @@ public class Ellenallas extends Alkatresz{
 
     @Override
     public String toString() {
-        return "Ellenallas - ar: " + ar + ", ertek: " + ertek;
+        return "Ellenallas: " + " ar " + ar + ", ertek: " + ertek;
     }
 
     @Override
