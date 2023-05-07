@@ -1,14 +1,47 @@
 package extra_gyakorlo_feladat;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Aramkor {
-    private final ArrayList<Alkatresz> alkatreszek = new ArrayList<>();
+    private final ArrayList<Alkatresz> alkatreszek ;
 
     public Aramkor() {
-
+        this.alkatreszek = new ArrayList<>();
     }
+
+    public Aramkor(String fileName) {
+        this.alkatreszek = new ArrayList<>();
+                try (Scanner scanner = new Scanner(new File(fileName))) {
+                    while (scanner.hasNextLine()) {
+                        String line = scanner.nextLine();
+                        if (line.isEmpty()) {
+                            continue;
+                        }
+                        String[] items = line.split(",");
+                        if(items[0].trim().equals("Ellenallas")){
+                            double ar = Double.parseDouble(items[1].trim());
+                            double ertek = Double.parseDouble(items[2].trim());
+                            addAlkatresz(new Ellenallas(ar,ertek));
+                        }
+                        else if(items[0].trim().equals("Kondenzator")){
+                            double ar = Double.parseDouble(items[1].trim());
+                            double ertek = Double.parseDouble(items[2].trim());
+                            addAlkatresz(new Kondenzator(ar, ertek));
+                        }
+                        else if(items[0].trim().equals("Tranzisztor")) {
+                            double ar = Double.parseDouble(items[1].trim());
+                            String kod = items[2].trim();
+                            addAlkatresz(new Tranzisztor(ar, kod));
+                        }
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
     public void addAlkatresz(Alkatresz alkatresz){
         alkatreszek.add(alkatresz);
     }

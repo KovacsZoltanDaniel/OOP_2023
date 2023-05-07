@@ -31,5 +31,9 @@ public class Main {
         System.out.println("Csak ellenallasokbol all: " + aramkor.csakEllenallasok());
 
         System.out.println("Eredo ellenallas : " + aramkor.eredoEllenallas());
+
+        Aramkor readFromFile = new Aramkor("aramkor.csv");
+        System.out.println();
+        System.out.println(readFromFile);
     }
 }
