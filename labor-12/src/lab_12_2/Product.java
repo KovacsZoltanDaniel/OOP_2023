@@ -1,4 +1,4 @@
-package lab_11_3;
+package lab_12_2;
 
     public class Product implements Comparable<Product> {
         private int ID;
@@ -13,7 +13,9 @@ package lab_11_3;
             this.price = price;
         }
 
-
+        public Product(int ID) {
+            this.ID = ID;
+        }
 
         public int getID() {
             return ID;
