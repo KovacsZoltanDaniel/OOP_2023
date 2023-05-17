@@ -20,7 +20,7 @@ public class Manager extends Employee{
 
     @Override
     public String toString() {
-        return "Manager{" +
+        return "Manager{" + this.getID() + " " + this.getFirstName() + " " + this.getLastName() + " " +
                 "department='" + department + '\'' +
                 '}';
     }
