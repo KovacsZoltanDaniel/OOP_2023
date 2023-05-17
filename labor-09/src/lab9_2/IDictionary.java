@@ -1,8 +1,13 @@
 package lab9_2;
 
 public interface IDictionary {
-     final static String DICTIONARY_FILE = "dict.txt";
-     boolean add(String word);
-     boolean find (String word);
+
+     String DICTIONARY_FILE = "text_to_find.txt";
+
+     boolean add(String item);
+
+     boolean find(String item);
+
      int size();
+
 }

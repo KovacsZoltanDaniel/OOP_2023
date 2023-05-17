@@ -10,23 +10,38 @@ public class DictionaryService {
     private IDictionary dictionary;
 
     public DictionaryService(DictionaryType dtype) {
-        dictionary = DictionaryProvider.createDictionary(dtype);//statikus metodusokat a tipusneven keresztul erjuk el
+        this.dictionary = DictionaryProvider.createDictionary(dtype);
     }
-    public boolean findWord(String word){
+
+    public boolean findWord(String word) {
         return dictionary.find(word);
     }
+
     public ArrayList<String> findWordsFile(String fileName) {
         ArrayList<String> words = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new File(fileName))){
-                while (scanner.hasNext()){
-                    String word = scanner.next();
-                    if(!(dictionary.find(word) && !(words.contains(word)))){
-                        words.add(word);
+        try (Scanner scanner = new Scanner(new File(fileName))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if (line.isEmpty()) {
+                    continue;
+                }
+                String[] items;
+                line = line.replaceAll(",", "");
+                line = line.replaceAll("\\.", "");
+                line = line.replaceAll("\\?", "");
+                line = line.replaceAll("!", "");
+                line = line.replaceAll(":", "");
+                line = line.replaceAll(";", "");
+
+                items = line.split(" ");
+
+                for (String item : items) {
+                    if (!dictionary.find(item.toLowerCase())) {
+                        words.add(item);
                     }
                 }
-
-        }
-         catch (FileNotFoundException e) {
+            }
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return words;
