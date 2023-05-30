@@ -1,6 +1,6 @@
 package lab_12_2;
 
-    public class Product implements Comparable<Product> {
+public class Product  {
         private int ID;
         private String name;
         private int amount;
@@ -11,10 +11,6 @@ package lab_12_2;
             this.name = name;
             this.amount = amount;
             this.price = price;
-        }
-
-        public Product(int ID) {
-            this.ID = ID;
         }
 
         public int getID() {
@@ -49,9 +45,5 @@ package lab_12_2;
                     ", amount=" + amount +
                     ", price=" + price +
                     "}";
-        }
-
-        public int compareTo(Product product) {
-            return this.getID() - product.getID();
         }
 }
